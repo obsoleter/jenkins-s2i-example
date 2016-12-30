@@ -18,6 +18,9 @@ RUN yum clean all && \
     mkdir -p /var/lib/jenkins && \
     chown -R 1001:0 /var/lib/jenkins && \
     chmod -R g+w /var/lib/jenkins
+RUN yum install python-pip python-wheel
+RUN yum upgrade python-setuptools
+RUN pip install tox
 
 # Copy the entrypoint
 COPY configuration/* /var/lib/jenkins/
